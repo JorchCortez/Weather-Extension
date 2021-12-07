@@ -31,7 +31,17 @@ const displayResults = (weather) =>{
     let date = document.querySelector('.location .date');
     date.innerText = dateBuilder(now);
 
+    //Setting up Temperature
+    let temp = document.querySelector('.current .temp')
+    temp.innerHTML = `${Math.round(weather.main.temp)}<span>°C</span>`
 
+    //Setting up weather
+    let weather_el = document.querySelector('.current .weather')
+    weather_el.innerText = weather.weather[0].main;
+
+    //Setting up hi/low temperatures
+    let hilo = document.querySelector('.hi-low')
+    hilo.innerText = `${Math.round(weather.main.temp_min)}°C / ${Math.round(weather.main.temp_max)}°C `
 }
 
 
