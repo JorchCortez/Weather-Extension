@@ -88,7 +88,7 @@ const loadSavedCities = (c) =>{
     let places = document.querySelector('.saved-places')
     let savedPlaces = ""
     c.forEach(el => {
-        savedPlaces += `<div class="place" onclick="getResults("${el}")" >${el}</div>`
+        savedPlaces += `<div class="place" onclick="getResults('${el}')" >${el}</div>`
     });
     places.innerHTML = savedPlaces;
 }
