@@ -1,0 +1,12 @@
+{
+    "manifest_version": 2,
+    "name": "Weather viewer",
+    "description": "Quick and easy to use extension to see the weather forecast",
+    "version": "1.0.0",
+    "icons":{"128":"icon_128.png"},
+    "browser_action":{
+        "default_icon": "icon_25.png",
+        "default_popup": "popup.html"
+    },
+    "permissions": ["activeTab","storage"]
+}
