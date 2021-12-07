@@ -3,21 +3,49 @@
     padding:0;
     box-sizing: border-box;
 }
-
-body{
+ 
+.app-container{ 
     font-family: 'monserrat', sans-serif;
     background: url('./Img/sunny-bg-min.jpg') no-repeat center center fixed;
     -webkit-background-size: cover;
     -moz-background-size: cover;
     -o-background-size: cover;
     background-size: cover;
+    width: 450px;
+    height: 600px;
+    overflow: hidden;
 }
+
 
 .app-wrap{
     display: flex;
-    flex-direction: column;
-    min-height: 100vh;
-    background: linear-gradient(to bottom, rgba(0,0,0,0.3), rgba(0,0,0,0.6))
+    flex-direction: column; 
+    height: 100%;
+    background: linear-gradient(to bottom, rgba(0,0,0,0.3), rgba(0,0,0,0.6));
+    position: relative;
+}
+
+.saved-places{
+    position: absolute;
+    top: 15px;
+    right:0px; 
+    z-index: 10;
+}
+
+.place{
+    position: relative;
+    right:-135px;
+    width: 160px;
+    background: rgba(255,255,255,0.4);
+    padding: 10px 10px 10px 25px;
+    border-radius: 15px 0 0 15px;
+    cursor:pointer;
+    transition: all 0.2s ease-in-out;
+    margin: 10px 0;
+}
+
+.place:hover{
+    right: 0px;
 }
 
 header{
@@ -93,4 +121,12 @@ main{
     font-weight: 500; 
     margin-bottom: 15px;
     text-shadow: 0px 4px rgba(0,0,0,0.4);
+}
+
+.icon{
+    font-size: 15px;
+    display: flex;
+    width: auto;  
+    cursor: pointer;
+    z-index: 100;
 }

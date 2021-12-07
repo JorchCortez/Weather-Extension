@@ -8,32 +8,43 @@
     <title>Easy Weather</title>
     <link rel="stylesheet" href="popup.css">
     <link rel="stylesheet" href="">
-    <link rel="stylesheet"
-        href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.15.4/css/fontawesome.min.css"
-        integrity="sha384-jLKHWM3JRmfMU0A5x5AkjWkw/EYfGUAGagvnfryNV3F9VqM98XiIH7VBGVoxVSc7" crossorigin="anonymous">
+    <script src="https://kit.fontawesome.com/2691ed30c3.js" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans" type="text/css">
 </head>
 
 <body>
-    <div class="app-wrap">
-        <header>
-            <input 
-                type="text" 
-                autocomplete="off" 
-                class="search-box"
-                placeholder="Search for a city...">
-        </header>
-        <main>
-            <section class="location">
-                <div class="city">Monterrey, NL</div>
-                <div class="date">Monday 6 December 2021</div>
-            </section>
-            <div class="current">
-                <div class="temp">15<span>°C</span></div>
-                <div class="weather">Sunny</div>
-                <div class="hi-low">13°c / 16°c</div> 
-            </div> 
-        </main> 
+    <div class="app-container"> 
+        <div class="app-wrap">
+            <div class="saved-places">
+                <div class="place" value="Monterrey, MX">
+                    Monterrey, Mx
+                </div>
+                <div class="place" value="Monterrey, MX">
+                    Monterrey, Mx
+                </div>
+                <div class="place" value="Monterrey, MX">
+                    Monterrey, Mx
+                </div>
+            </div>
+            <header>
+                <input 
+                    type="text" 
+                    autocomplete="off" 
+                    class="search-box"
+                    placeholder="Search for a city...">
+            </header>
+            <main>
+                <section class="location">
+                    <div class="city"><span class="icon"><i class="fas fa-thumbtack"></i></span>Monterrey, NL</div>
+                    <div class="date">Monday 6 December 2021</div>
+                </section>
+                <div class="current">
+                    <div class="temp">15<span>°C</span></div>
+                    <div class="weather">Sunny</div>
+                    <div class="hi-low">13°c / 16°c</div> 
+                </div> 
+            </main> 
+        </div>
     </div>
 </body>
 <script src="popup.js" ></script>
