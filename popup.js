@@ -1,10 +1,10 @@
 const api = {
     key:"01a20d2f630634cf6699c7899ec94813",
-    baseurl:"https://api.openweathermap.org/data/2.5/",
+    baseurl:"https://api.openweathermap.org/data/2.5/"
 }
 
 window.onload = () => {
-    getResults("Monterrey, Mx")
+    getResults("Monterrey, Mx") 
 } 
 
 //Search box event listener
@@ -36,6 +36,20 @@ function getResults(query) {
     }).then(displayResults)
 }
 
+function getForecast(query){
+    fetch(`${api.baseurl}onecall?lat=${query.lat}&lon=${query.lon}&exclude=hourly,minutely,current&units=metric&appid=${api.key}`)
+    .then(forecast =>{
+        return forecast.json();
+    }).then(displayForecast)
+}
+
+const displayForecast = (forecast) => {
+
+    forecast.daily.map( (day, index) => {
+        console.log(calcDay(index + 1) ,day.temp.min + "  " + day.temp.max)
+    })
+}
+
 const displayResults = (weather) =>{
     console.log(weather)
 
@@ -64,7 +78,7 @@ const displayResults = (weather) =>{
     //Setting up icon
     let weatherIcon = document.querySelector('.weather-icon')
     weatherIcon.src = "http://openweathermap.org/img/w/" + weather.weather[0].icon + ".png";
-
+    getForecast(weather.coord)
 }
 
 const dateBuilder = (d) => {
@@ -103,6 +117,12 @@ const loadSavedCities = (c) =>{
     places.innerHTML = savedPlaces;
 }
 
+const calcDay = (targetDay) => {
+    let now = new Date(); 
+    now.setDate(now.getDate() + targetDay) 
+    let Days =["Sunday","Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"]
+    return Days[now.getDay()]
+}
 
 let currSaved = [
     "Monterrey, MX",
