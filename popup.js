@@ -3,6 +3,10 @@ const api = {
     baseurl:"https://api.openweathermap.org/data/2.5/",
 }
 
+window.onload = () => {
+    getResults("Monterrey, Mx")
+} 
+
 //Search box event listener
 const searchBox = document.querySelector('.search-box');
 searchBox.addEventListener('keypress', setQuery);
@@ -10,7 +14,7 @@ searchBox.addEventListener('keypress', setQuery);
 //Save city click event listener 
 const pin = document.querySelector('.icon');
 pin.addEventListener('click', pinAddress);
- 
+
 
 function pinAddress(){
     let city = document.querySelector('.location .city').innerText;
@@ -34,7 +38,7 @@ function getResults(query) {
 
 const displayResults = (weather) =>{
     console.log(weather)
-    
+
     //Setting the city, Country
     let city = document.querySelector('.location .city');
     city.innerHTML = `<span class="icon"><i class="fas fa-thumbtack"></i></span>${weather.name}, ${weather.sys.country}`;
@@ -50,11 +54,17 @@ const displayResults = (weather) =>{
 
     //Setting up weather
     let weather_el = document.querySelector('.current .weather')
-    weather_el.innerText = weather.weather[0].main;
+    weather_el.innerText = weather.weather[0].description;
 
     //Setting up hi/low temperatures
     let hilo = document.querySelector('.hi-low')
     hilo.innerText = `${Math.round(weather.main.temp_min)}°C / ${Math.round(weather.main.temp_max)}°C `
+
+    
+    //Setting up icon
+    let weatherIcon = document.querySelector('.weather-icon')
+    weatherIcon.src = "http://openweathermap.org/img/w/" + weather.weather[0].icon + ".png";
+
 }
 
 const dateBuilder = (d) => {

@@ -77,7 +77,7 @@ header input:focus{
 
 main{
     flex: 1 1 100%;
-    padding: 25px 25px 50px;
+    padding: 25px 25px 30px;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -100,7 +100,7 @@ main{
     color: #FFF;
     font-size: 102px;
     font-weight: 900;
-    margin: 30px 0px;
+    margin: 0;
     text-shadow: 2px 10px rgba(0,0,0,0.65);
 }
 .current .temp span{ 
@@ -121,6 +121,15 @@ main{
     font-weight: 500; 
     margin-bottom: 15px;
     text-shadow: 0px 4px rgba(0,0,0,0.4);
+}
+
+.current .weather-icon-container{
+    width: 100px;
+    margin: 0 auto;
+}
+
+.current .weather-icon{
+    width: 100px;
 }
 
 .icon{

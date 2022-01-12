@@ -16,15 +16,12 @@
     <div class="app-container"> 
         <div class="app-wrap">
             <div class="saved-places">
-                <div class="place" value="Monterrey, MX">
+                <div class="place" onclick="getResults('Monterrey, MX')">
                     Monterrey, Mx
                 </div>
-                <div class="place" value="Monterrey, MX">
-                    Monterrey, Mx
-                </div>
-                <div class="place" value="Monterrey, MX">
-                    Monterrey, Mx
-                </div>
+                <div class="place" onclick="getResults('Vancouver, CA')">
+                    Vancouver, CA
+                </div> 
             </div>
             <header>
                 <input 
@@ -40,6 +37,7 @@
                 </section>
                 <div class="current">
                     <div class="temp">15<span>°C</span></div>
+                    <div class="weather-icon-container"><img class="weather-icon" src="http://openweathermap.org/img/w/04n.png" /></div>
                     <div class="weather">Sunny</div>
                     <div class="hi-low">13°c / 16°c</div> 
                 </div> 
