@@ -44,9 +44,15 @@ function getForecast(query){
 }
 
 const displayForecast = (forecast) => {
-
+    
+    let fc = document.querySelector('.forecast');
+    fc.innerHTML = "";
     forecast.daily.map( (day, index) => {
-        console.log(calcDay(index + 1) ,day.temp.min + "  " + day.temp.max)
+        if(index < 5){
+            fc.innerHTML += `<div class="fc-day"><div class="icon-small"><img src="http://openweathermap.org/img/w/${day.weather[0].icon}.png" /></div><div class="day-name">${calcDay(index + 1)}</div><div class="temp">${Math.round(day.temp.min)}<span>°C</span> / ${Math.round(day.temp.max)}<span>°C</span></div></div>`
+            console.log(forecast)
+            console.log(calcDay(index + 1) ,day.temp.min + "  " + day.temp.max)
+        }
     })
 }
 
@@ -74,10 +80,11 @@ const displayResults = (weather) =>{
     let hilo = document.querySelector('.hi-low')
     hilo.innerText = `${Math.round(weather.main.temp_min)}°C / ${Math.round(weather.main.temp_max)}°C `
 
-    
     //Setting up icon
     let weatherIcon = document.querySelector('.weather-icon')
     weatherIcon.src = "http://openweathermap.org/img/w/" + weather.weather[0].icon + ".png";
+
+    //Requesting weekly forecast
     getForecast(weather.coord)
 }
 
@@ -120,7 +127,7 @@ const loadSavedCities = (c) =>{
 const calcDay = (targetDay) => {
     let now = new Date(); 
     now.setDate(now.getDate() + targetDay) 
-    let Days =["Sunday","Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"]
+    let Days =["Sun","Mon","Tue","Wed","Thu","Fri","Sat"]
     return Days[now.getDay()]
 }
 
