@@ -188,9 +188,14 @@ main{
 }
 
 
+.dynamic-bg{ 
+    transition: 0.5s ease-in-out;
+}
 
 /*
+
+^
+|
 Add transition when changing background
 background url
-transition 0.5s ease-in-out
 */
