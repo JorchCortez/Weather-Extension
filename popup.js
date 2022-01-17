@@ -4,20 +4,23 @@ const api = {
 }
 
 window.onload = () => {
-    getResults("Monterrey, Mx") 
+    //getResults("Monterrey, Mx") 
+    saveCities();
 } 
 
 //Search box event listener
 const searchBox = document.querySelector('.search-box');
 searchBox.addEventListener('keypress', setQuery);
+let currCities = [];
+//Save city click event listener   
+document.addEventListener('DOMContentLoaded', function() {
+    document.getElementById("pin").addEventListener("click", function(){pinAddress()});
+}); 
 
-//Save city click event listener 
-const pin = document.querySelector('.icon');
-pin.addEventListener('click', pinAddress);
 
 
 function pinAddress(){
-    let city = document.querySelector('.location .city').innerText;
+    let city = document.querySelector('.location .city .city-txt').innerText;
     saveCities(city)
 }
 
@@ -31,6 +34,12 @@ function setQuery(evt){
 function getResults(query) {
     fetch(`${api.baseurl}weather?q=${query}&units=metric&APPID=${api.key}`)
     .then(weather => {
+        return weather.json();
+    }).then(displayResults)
+}
+function getGeoResults(lat,lon) {
+    fetch(`${api.baseurl}weather?lat=${lat}&lon=${lon}&units=metric&appid=${api.key}`)
+    .then(weather => { 
         return weather.json();
     }).then(displayResults)
 }
@@ -55,10 +64,9 @@ const displayForecast = (forecast) => {
 
 const displayResults = (weather) =>{
     console.log(weather)
-
     //Setting the city, Country
-    let city = document.querySelector('.location .city');
-    city.innerHTML = `<span class="icon"><img src="./Img/pin-icon.png" /></span>${weather.name}, ${weather.sys.country}`;
+    let city = document.querySelector('.location .city .city-txt');
+    city.innerHTML = `${weather.name}, ${weather.sys.country}`;
 
     //Setting up the date
     let now = new Date();
@@ -104,24 +112,59 @@ const dateBuilder = (d) => {
     return `${day} ${date} ${month} ${year}` 
 }
 
-const saveCities = (city) => {
-
-    let cities = chrome.storage.sync.get(["savedCities"], function(){
-        //  items = [ { "yourBody": "myBody" } ]
+const saveCities = (city) => {  
+    currCities = []
+    chrome.storage.sync.get(["myCities"], function(items){ 
+        console.log(city)
+        if(items.myCities.length > 0 || city){
+            if(city){ 
+                currCities = [...items.myCities, city]
+                getResults(currCities[0]) 
+                loadSavedCities(currCities)
+                chrome.storage.sync.set({ "myCities": currCities }, function(){}); 
+            }
+            else{ 
+                getResults(items.myCities[0]) 
+                loadSavedCities(items.myCities)
+            }
+        }
+        else{
+            console.log("Here!")
+            //If no locations stored bring the current geolocation
+            navigator.geolocation.getCurrentPosition(success, error, options);
+        }
     });
-    console.log(cities)
-    
-    //chrome.storage.sync.set({ "currentCities": city }, function(){});  
-    //loadSavedCities(currSaved); 
+}
+
+const deleteCity = (city) => {
+    let currCities = []
+    chrome.storage.sync.get(["myCities"], function(items){
+        console.log(items.myCities)
+        currCities = [...items.myCities, city]
+        
+        //Delete the specific city
+        let newCities = currCities.filter(function(ele){ 
+            return ele != city; 
+        });
+
+        console.log(newCities)
+        loadSavedCities(newCities)
+        chrome.storage.sync.set({ "myCities": newCities }, function(){
+            console.log("Updated")
+            //  A data saved callback omg so fancy
+        });
+
+    });
 }
 
 const loadSavedCities = (c) =>{
     let places = document.querySelector('.saved-places')
     let savedPlaces = ""
-    c.forEach(el => {
-        savedPlaces += `<div class="place" onclick="getResults('${el}')" >${el}</div>`
+    c.forEach(el => { 
+        savedPlaces += `<div class="place" value="${el}" >${el}<span class="delete-city"><img src="./Img/trashcan.png" /></span></div>`
     });
     places.innerHTML = savedPlaces;
+    AddEvents();
 }
 
 const calcDay = (targetDay) => {
@@ -135,6 +178,17 @@ let currSaved = [
     "Monterrey, MX",
     "Vancouver, CA"
     ]
+
+const AddEvents = () => {
+    //Load event
+    let placeList = document.getElementsByClassName("place");
+    console.log(placeList)
+    for (var i = 0; i < placeList.length; i++) { 
+        let p = placeList[i].innerText
+        placeList[i].addEventListener("click", function(){getResults(p)}); 
+        placeList[i].children[0].addEventListener("click", function(){deleteCity(p)});
+    }
+}
 
 const getBg = (weatherType, temp) => {
 
@@ -172,4 +226,20 @@ switch(weatherType){
     break;
 }
 
+}
+ 
+//Geolocation functions
+var options = {
+    enableHighAccuracy: false,
+    timeout: 2500,
+    maximumAge: 0
+};
+
+function success(pos) {
+var crd = pos.coords;
+    getGeoResults(crd.latitude,crd.longitude) 
+}
+
+function error(err) {
+console.warn(`ERROR(${err.code}): ${err.message}`);
 }

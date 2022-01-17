@@ -37,18 +37,36 @@
 
 .place{
     position: relative;
-    right:-135px;
-    width: 160px;
+    right:-155px;
+    width: 180px;
     background: rgba(255,255,255,0.4);
     padding: 10px 10px 10px 25px;
     border-radius: 15px 0 0 15px;
     cursor:pointer;
     transition: all 0.2s ease-in-out;
     margin: 10px 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 .place:hover{
     right: 0px;
+}
+
+.place>.delete-city>img{
+    width: 15px;
+    height: auto;
+    cursor: pointer;
+    margin-left: 10px;
+    transition: 0.25s ease-in-out;
+}
+
+.place>.delete-city>img:hover{
+    width: 25px;
+    height: auto;
+    cursor: pointer;
+    margin-left: 10px;
 }
 
 header{

@@ -13,14 +13,7 @@
 <body>
     <div class="app-container dynamic-bg"> 
         <div class="app-wrap">
-            <div class="saved-places">
-                <div class="place" onclick="getResults('Monterrey, MX')">
-                    Monterrey, Mx
-                </div>
-                <div class="place" onclick="getResults('Vancouver, CA')">
-                    Vancouver, CA
-                </div> 
-            </div>
+            <div class="saved-places"></div>
             <header>
                 <input 
                     type="text" 
@@ -30,7 +23,7 @@
             </header>
             <main>
                 <section class="location">
-                    <div class="city"><span class="icon"><img src="./Img/pin-icon.png" /></span>Monterrey, NL</div>
+                    <div class="city"><span class="icon"><img src="./Img/pin-icon.png" id="pin"/></span><span class="city-txt">Monterrey, NL</span></div>
                     <div class="date">Monday 6 December 2021</div>
                 </section>
                 <div class="current">
