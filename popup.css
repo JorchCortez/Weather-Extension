@@ -6,7 +6,10 @@
  
 .app-container{ 
     font-family: 'monserrat', sans-serif;
-    background: url('./Img/sunny-bg-min.jpg') no-repeat center center fixed;
+    background: url('./Img/sunny-bg-min.jpg');
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
     -webkit-background-size: cover;
     -moz-background-size: cover;
     -o-background-size: cover;
@@ -21,7 +24,7 @@
     display: flex;
     flex-direction: column; 
     height: 100%;
-    background: linear-gradient(to bottom, rgba(0,0,0,0.3), rgba(0,0,0,0.6));
+    background: linear-gradient(to bottom, rgba(0,0,0,0.4), rgba(0,0,0,0.2));
     position: relative;
 }
 
@@ -106,7 +109,7 @@ main{
     font-size: 88px;
     font-weight: 900;
     margin: 0;
-    text-shadow: 2px 10px rgba(0,0,0,0.65);
+    text-shadow: 4px 6px rgba(0,0,0,0.4);
 }
 .current .temp span{ 
     font-weight: 500; 
@@ -118,14 +121,14 @@ main{
     font-weight: 700;
     font-style: italic;
     margin-bottom: 15px;
-    text-shadow: 3px 3px rgba(0,0,0,0.4);
+    text-shadow: 3px 2px rgba(0,0,0,0.4);
 }
 .current .hi-low{
     color: #FFF;
     font-size: 24px;
     font-weight: 500; 
     margin-bottom: 15px;
-    text-shadow: 0px 4px rgba(0,0,0,0.4);
+    text-shadow: 0px 2px rgba(0,0,0,0.4);
 }
 
 .current .weather-icon-container{
@@ -173,14 +176,14 @@ main{
     font-size: 24px;
     font-weight: 600;
     margin-bottom: 5px;
-    text-shadow: 0px 4px rgb(0 0 0 / 40%);
+    text-shadow: 0px 2px rgb(0 0 0 / 40%);
 }
 
 .fc-day .temp {
     font-size: 14px;
     font-weight: 400;
     margin-bottom: 15px;
-    text-shadow: 0px 4px rgb(0 0 0 / 40%);
+    text-shadow: 0px 2px rgb(0 0 0 / 40%);
 }
 .fc-day .temp span{
     font-weight: 600; 

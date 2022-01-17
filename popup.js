@@ -18,18 +18,17 @@ pin.addEventListener('click', pinAddress);
 
 function pinAddress(){
     let city = document.querySelector('.location .city').innerText;
-    console.log(city)
     saveCities(city)
 }
 
 function setQuery(evt){
     if(evt.keyCode==13){
         getResults(searchBox.value); 
+        searchBox.value = ""
     }
 }
 
 function getResults(query) {
-    console.log(query)
     fetch(`${api.baseurl}weather?q=${query}&units=metric&APPID=${api.key}`)
     .then(weather => {
         return weather.json();
@@ -50,8 +49,6 @@ const displayForecast = (forecast) => {
     forecast.daily.map( (day, index) => {
         if(index < 5){
             fc.innerHTML += `<div class="fc-day"><div class="icon-small"><img src="http://openweathermap.org/img/w/${day.weather[0].icon}.png" /></div><div class="day-name">${calcDay(index + 1)}</div><div class="temp">${Math.round(day.temp.min)}<span>°C</span> / ${Math.round(day.temp.max)}<span>°C</span></div></div>`
-            console.log(forecast)
-            console.log(calcDay(index + 1) ,day.temp.min + "  " + day.temp.max)
         }
     })
 }
@@ -83,6 +80,9 @@ const displayResults = (weather) =>{
     //Setting up icon
     let weatherIcon = document.querySelector('.weather-icon')
     weatherIcon.src = "http://openweathermap.org/img/w/" + weather.weather[0].icon + ".png";
+
+    //Settubg up Background
+    getBg(weather.weather[0].main,weather.main.temp);
 
     //Requesting weekly forecast
     getForecast(weather.coord)
@@ -135,3 +135,41 @@ let currSaved = [
     "Monterrey, MX",
     "Vancouver, CA"
     ]
+
+const getBg = (weatherType, temp) => {
+
+//Find background object
+let main = document.querySelector('.app-container')
+const bgRoute = "./Img/"
+console.log(weatherType, temp)
+switch(weatherType){
+    case("Thunderstorm"):
+        main.style.backgroundImage = `url("${bgRoute}bg-thunderstorm.png")`
+    break;
+    case("Drizzle"):
+        main.style.backgroundImage = `url("${bgRoute}bg-drizzle.png")`
+    break;
+    case("Rain"):
+        main.style.backgroundImage = `url("${bgRoute}bg-rain.png")`
+    break;
+    case("Snow"):
+        main.style.backgroundImage = `url("${bgRoute}bg-snow.png")`
+    break;
+    case("Clear"):
+        console.log("yeet!")
+        if(temp < 10)
+        main.style.backgroundImage = `url("${bgRoute}bg-cold.png")`
+        else if(temp > 30)
+        main.style.backgroundImage = `url("${bgRoute}bg-hot.png")`
+        else
+        main.style.backgroundImage = `url("${bgRoute}bg-normal.png")`
+    break;
+    case("Clouds"):
+        main.style.backgroundImage = `url("${bgRoute}bg-clouds.png")`
+    break;
+    case("Fog"):
+        main.style.backgroundImage = `url("${bgRoute}bg-fog.png")`
+    break;
+}
+
+}
