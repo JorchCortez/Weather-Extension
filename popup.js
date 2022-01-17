@@ -58,7 +58,7 @@ const displayResults = (weather) =>{
 
     //Setting the city, Country
     let city = document.querySelector('.location .city');
-    city.innerHTML = `<span class="icon"><i class="fas fa-thumbtack"></i></span>${weather.name}, ${weather.sys.country}`;
+    city.innerHTML = `<span class="icon"><img src="./Img/pin-icon.png" /></span>${weather.name}, ${weather.sys.country}`;
 
     //Setting up the date
     let now = new Date();
@@ -106,13 +106,13 @@ const dateBuilder = (d) => {
 
 const saveCities = (city) => {
 
-    /*let cities = chrome.storage.sync.get(["currentCities"], function(items){
+    let cities = chrome.storage.sync.get(["savedCities"], function(){
         //  items = [ { "yourBody": "myBody" } ]
     });
     console.log(cities)
-    */
+    
     //chrome.storage.sync.set({ "currentCities": city }, function(){});  
-    loadSavedCities(currSaved); 
+    //loadSavedCities(currSaved); 
 }
 
 const loadSavedCities = (c) =>{

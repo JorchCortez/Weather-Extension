@@ -141,9 +141,11 @@ main{
 }
 
 .icon{
+
     font-size: 15px;
     display: flex;
-    width: auto;  
+    width: 15px;
+    height: 15px;
     cursor: pointer;
     z-index: 100;
 }
