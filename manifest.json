@@ -4,7 +4,7 @@
     "description": "Quick and easy to use extension to see the weather forecast",
     "version": "1.0.1",
     "icons":{"128":"icon_128.png"},
-    "browser_action":{
+    "action":{
         "default_icon": "icon_25.png",
         "default_popup": "popup.html"
     },
