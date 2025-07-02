@@ -14,27 +14,49 @@
     <div class="app-container dynamic-bg"> 
         <div class="app-wrap">
             <div class="saved-places"></div>
-            <header>
+            <!--header>
                 <input 
                     type="text" 
                     autocomplete="off" 
                     class="search-box"
                     placeholder="Search for a city...">
-            </header>
+            </header -->
             <main>
                 <section class="location">
-                    <div class="city"><span class="icon"><img src="./Img/pin-icon.png" id="pin"/></span><span class="city-txt">Monterrey, NL</span></div>
+                    <div class="location-title"> 
+                        <div class="location-title__name-container">
+                            <img class="location-title__pin" src="./Img/pin.svg" id="pin"/>
+                            <span class="location-title__name">Monterrey, NL</span>
+                        </div>
+                        <img class="location-title__dropdown" src="./Img/arrow-down.svg" id="pin"/>
+                    </div>
+
+                    <div class="current-weather">
+                        <div class="current-weather__main">
+                            <div class="corrent-weather__temp">15<span>°C</span></div>
+                            <div class="current-weather__description">
+                                <div class="weather">Sunny</div>
+                                <div class="current-weather__date">6/18</div>
+                            </div>
+                        </div>
+                        <div class="weather-icon-container">
+                            <img class="weather-icon" src="http://openweathermap.org/img/wn/01d@4x.png" />
+                        </div>
+                        
+                        <div class="hi-low">13°c / 16°c</div> 
+                    </div> 
                     <div class="date">Monday 6 December 2021</div>
                 </section>
-                <div class="current">
-                    <div class="temp">15<span>°C</span></div>
-                    <div class="weather-icon-container"><img class="weather-icon" src="http://openweathermap.org/img/w/04n.png" /></div>
-                    <div class="weather">Sunny</div>
-                    <div class="hi-low">13°c / 16°c</div> 
-                </div> 
             </main>
             <footer>
-                <div class="forecast"></div>
+                <div class="forecast"> 
+                    <div class="fc-day"><div class="icon-small"><img src="http://openweathermap.org/img/w/${day.weather[0].icon}.png" /></div><div class="day-name">x</div><div class="temp">0<span>°C</span> / 0<span>°C</span></div></div>
+                    <div class="fc-day"><div class="icon-small"><img src="http://openweathermap.org/img/w/${day.weather[0].icon}.png" /></div><div class="day-name">x</div><div class="temp">0<span>°C</span> / 0<span>°C</span></div></div>
+                    <div class="fc-day"><div class="icon-small"><img src="http://openweathermap.org/img/w/${day.weather[0].icon}.png" /></div><div class="day-name">x</div><div class="temp">0<span>°C</span> / 0<span>°C</span></div></div>
+                    <div class="fc-day"><div class="icon-small"><img src="http://openweathermap.org/img/w/${day.weather[0].icon}.png" /></div><div class="day-name">x</div><div class="temp">0<span>°C</span> / 0<span>°C</span></div></div>
+                    <div class="fc-day"><div class="icon-small"><img src="http://openweathermap.org/img/w/${day.weather[0].icon}.png" /></div><div class="day-name">x</div><div class="temp">0<span>°C</span> / 0<span>°C</span></div></div>
+                    <div class="fc-day"><div class="icon-small"><img src="http://openweathermap.org/img/w/${day.weather[0].icon}.png" /></div><div class="day-name">x</div><div class="temp">0<span>°C</span> / 0<span>°C</span></div></div>
+                </div>
             </footer>
         </div>
     </div>
