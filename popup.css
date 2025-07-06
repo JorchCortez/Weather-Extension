@@ -1,4 +1,4 @@
-*{
+* {
     margin:0;
     padding:0;
     box-sizing: border-box;
@@ -16,6 +16,8 @@
 
 .app-container{ 
     font-family: 'monserrat', sans-serif;
+    font-size: 2rem;
+    font-weight: 400;
     background: url('./Img/sunny-bg-min.jpg');
     background-position: center;
     background-repeat: no-repeat;
@@ -25,17 +27,18 @@
     -o-background-size: cover;
     background-size: cover;
     width: 450px;
-    height: auto;
+    height: 800px;
     overflow: hidden;
+    color: white;
+    font-weight: 400;;
 }
 
 .app-wrap{
     display: flex;
     flex-direction: column; 
     height: 100%;
-    background: linear-gradient(to bottom, rgba(0,0,0,0.4), rgba(0,0,0,0.2));
     position: relative;
-    padding: 1rem;
+    padding: 2rem 3rem;
 }
 
 .location-title {
@@ -43,6 +46,7 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
+    padding-bottom: 1.5rem;
 }
 
 .location-title__name-container {
@@ -50,30 +54,18 @@
     align-items: center;
     justify-content: center;
     flex-direction: row;
-    color: white;
     gap: var(--gap);
 }
 
 .location-title__pin {
     width: 1rem;
     height: 1rem;
-    color: white;
 }
 
 .location-title__dropdown{
     width: 1rem;
     height: 1rem;
-    color: white;
     cursor: pointer;
-}
-
-.corrent_temp {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
-    color: white;
-    padding: 1rem 0;
 }
 
 .current-weather {
@@ -81,7 +73,6 @@
     justify-content: center;
     align-items: center;
     flex-direction: column;
-    color: white;
 }
 
 .current-weather__main {
@@ -125,7 +116,27 @@
     width: 10rem;
     height: 10rem;
 }
+
 .weather-icon {
     width: 100%;
     height: 100%;
+}
+
+.current-weather__details {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: var(--gap);
+}
+
+.current-weather__detail {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 0.5rem;
+    border-radius: 0.5rem;
+    background-color: rgba(255, 255, 255, 0.25);
+    border: 1px solid rgba(255, 255, 255, 0.5);
+    height: 8rem;
+    text-align: center;
+    gap: 0.5rem;
 }
