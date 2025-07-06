@@ -42,51 +42,51 @@
 	"4":{
 		"day":{
 			"description":"broken clouds",
-			"image":"http://openweathermap.org/img/wn/03d@4x.png"
+			"image":"http://openweathermap.org/img/wn/04d@4x.png"
 		},
 		"night":{
 			"description":"broken clouds",
-			"image":"http://openweathermap.org/img/wn/03n@4x.png"
+			"image":"http://openweathermap.org/img/wn/04n@4x.png"
 		}
 	},
 	"9":{
 		"day":{
 			"description":"Sowers",
-			"image":"http://openweathermap.org/img/wn/03d@4x.png"
+			"image":"http://openweathermap.org/img/wn/09d@4x.png"
 		},
 		"night":{
 			"description":"Sowers",
-			"image":"http://openweathermap.org/img/wn/03n@4x.png"
+			"image":"http://openweathermap.org/img/wn/09n@4x.png"
 		}
 	},
 	"10":{
 		"day":{
 			"description":"Raining",
-			"image":"http://openweathermap.org/img/wn/03d@4x.png"
+			"image":"http://openweathermap.org/img/wn/10d@4x.png"
 		},
 		"night":{
 			"description":"Raining",
-			"image":"http://openweathermap.org/img/wn/03n@4x.png"
+			"image":"http://openweathermap.org/img/wn/10n@4x.png"
 		}
 	},
 	"11":{
 		"day":{
 			"description":"Thunderstorm",
-			"image":"http://openweathermap.org/img/wn/03d@4x.png"
+			"image":"http://openweathermap.org/img/wn/11d@4x.png"
 		},
 		"night":{
 			"description":"Thunderstorm",
-			"image":"http://openweathermap.org/img/wn/03n@4x.png"
+			"image":"http://openweathermap.org/img/wn/11n@4x.png"
 		}
 	},
 	"13":{
 		"day":{
 			"description":"Snow",
-			"image":"http://openweathermap.org/img/wn/03d@4x.png"
+			"image":"http://openweathermap.org/img/wn/13d@4x.png"
 		},
 		"night":{
 			"description":"Snow",
-			"image":"http://openweathermap.org/img/wn/03n@4x.png"
+			"image":"http://openweathermap.org/img/wn/13n@4x.png"
 		}
 	},
 	"50":{
