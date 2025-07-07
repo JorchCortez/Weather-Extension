@@ -1,6 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
-
+<html lang="en"> 
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -26,17 +25,18 @@
                     <div class="location-title"> 
                         <div class="location-title__name-container">
                             <img class="location-title__pin" src="./Img/pin.svg" id="pin"/>
-                            <span class="location-title__name">Monterrey, NL</span>
+                            <span class="location-title__name" w-val="location">Monterrey, NL</span>
                         </div>
                         <img class="location-title__dropdown" src="./Img/arrow-down.svg" id="pin"/>
                     </div>
 
                     <div class="current-weather">
                         <div class="current-weather__main">
-                            <div class="corrent-weather__temp">15<span>°C</span></div>
+                            <div class="corrent-weather__temp">
+                                <span w-val="temp">15<span w-val="temp-unit">°C</span>
+                            </div>
                             <div class="current-weather__description">
-                                <div class="weather">Sunny</div>
-                                <div class="current-weather__date">6/18</div>
+                                <div class="weather" w-val="desc">Sunny</div> 
                             </div>
                         </div>
                         <div class="weather-icon-container">
@@ -46,19 +46,38 @@
                         <div class="current-weather__details">
                             <div class="current-weather__detail">
                                 <span class="detail-label">Wind Speed</span>
-                                <span class="detail-value">5 km/h</span>
+                                <span class="detail-value" w-val="wind-speed">5</span>
+                                <span class="detail-value-sm" w-val="wind-speed">km/h</span>
                             </div>
                             <div class="current-weather__detail">
                                 <span class="detail-label">Wind Direction</span>
-                                <span class="detail-value">5 km/h</span>
+                                <span class="detail-value" w-val="wind-dir">NW</span>
                             </div>
                             <div class="current-weather__detail">
                                 <span class="detail-label">Humidity</span>
-                                <span class="detail-value">5 km/h</span>
+                                <span class="detail-value" w-val="humidity">5%</span>
                             </div>
                         </div>
                     </div> 
-                    <div class="date">Monday 6 December 2021</div>
+                    <div class="hourly-forecast">
+                        <div class="hourly-forecast__title">Hourly Forecast</div>
+                        <div class="hourly-forecast__list" w-val="hourly-forecast">
+                            <div class="hourly-forecast__item">
+                                <span class="hour">12:00</span>
+                                <img class="hourly-forecast__icon" src="http://openweathermap.org/img/wn/01d@4x.png" />
+                                <span class="temp" hf-val="temp">15<span>°C</span></span>
+                            </div>
+                            <div class="hourly-forecast__item">
+                                <span class="hour">13:00</span>
+                                <img class="hourly-forecast__icon" src="http://openweathermap.org/img/wn/01d@4x.png" />
+                                <span class="temp">16<span>°C</span></span>
+                            </div>
+                            <div class="hourly-forecast__item">
+                                <span class="hour">14:00</span>
+                                <img class="hourly-forecast__icon" src="http://openweathermap.org/img/wn/01d@4x.png" />
+                                <span class="temp">17<span>°C</span></span> 
+                            </div>  
+                    </div>
                 </section>
             </main>
             <footer>
@@ -74,6 +93,8 @@
         </div>
     </div>
 </body>
-<script src="popup.js" ></script>
+<!--script src="popup.js" ></script-->
+
+<script src="weatherApi.js"></script>
 
 </html>
