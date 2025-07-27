@@ -31,7 +31,7 @@
     -o-background-size: cover;
     background-size: cover;
     width: 450px;
-    height: 800px;
+    height: 900px;
     overflow: hidden;
     color: white;
     font-weight: 400;;
@@ -186,6 +186,16 @@
     flex-direction: row;
     overflow-x: auto;
     gap: var(--gap);
+    scroll-snap-type: x mandatory;
+    scroll-padding: var(--gap);
+    cursor: grab;
+    scroll-behavior: smooth;
+    -webkit-overflow-scrolling: touch; /* For better iOS scrolling */
+    user-select: none; /* Prevent text selection during drag */
+}
+
+.hourly-forecast__list::-webkit-scrollbar {
+    /* display: none; */
 }
 
 .hourly-forecast__item {

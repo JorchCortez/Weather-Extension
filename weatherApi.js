@@ -27,6 +27,7 @@ class manageData {
         this.hourlyForecast = document.querySelector('[w-val="hourly-forecast"]');
         this.weatherDescriptions = null;
         this.data = [];
+        this.hourlyIndex = [];
         
         this.init();
     }
@@ -50,6 +51,22 @@ class manageData {
         })
         .catch(error => console.error('Error loading weather descriptions:', error));
     }
+
+    setHourlyIndex = () => {
+        if(this.data[0].hourly.time && this.data[0].hourly.time.length > 0) {
+            const currentDateTime = new Date();
+            const nextDay = new Date(currentDateTime);
+            nextDay.setHours(currentDateTime.getHours() + 24); // 24 hours from now
+            
+            this.hourlyIndex = this.data[0].hourly.time.map((value, index) => [value, index])
+            .filter((value) => {
+                const hourDate = new Date(value[0]);
+                return hourDate >= currentDateTime ;z
+            })
+            .map(([value, index]) => index)
+            .slice(0, 24); // Ensure we get at most 24 hours
+        } 
+    }
         
     setWeatherData() {
         console.log('Setting Weather Data');
@@ -57,7 +74,7 @@ class manageData {
         if(this.data && this.data.length > 0) {
             const currentData = this.data[0].current;
             const dailyData = this.data[0].daily;
-            const hourlyData = this.data[0].hourly;
+            this.setHourlyIndex();
 
             this.temperature.innerHTML = `${Math.round(currentData.temperature_2m)}<span w-val="temp-unit">°C</span>`;
             this.city.innerHTML = 'Vancouver'; // Placeholder, can be set dynamically
@@ -66,16 +83,15 @@ class manageData {
             this.weatherDescription.innerHTML = currentData; // Placeholder, can be set dynamically
             this.humidity.innerHTML = `${currentData.relative_humidity_2m}%`;
 
+            this.hourlyForecast.innerHTML = ''; // Clear previous hourly forecast
             // Set hourly forecast
-            hourlyData.apparent_temperature.forEach((temp, index) => {
-                if (index < 24) { // Limit to 5 items
+            this.hourlyIndex.forEach((hindex, i) => {
                     const hourItem = document.createElement('div');
                     hourItem.className = 'hourly-forecast__item';
-                    hourItem.innerHTML = `<span class="hour">${new Date().getHours() + index}:00</span>
-                                          <img class="hourly-forecast__icon" src="${this.setWeatherIcon(currentData.is_day, currentData.weather_code)}" />
-                                          <span class="temp">${Math.round(temp)}<span>°C</span></span>`;
+                    hourItem.innerHTML = `  <span class="hour">${new Date(this.data[0].hourly.time[hindex]).getHours()}:00</span>
+                                            <img class="hourly-forecast__icon" src="${this.setWeatherIcon(currentData.is_day, this.data[0].hourly.weather_code[hindex])}" />
+                                            <span class="temp">${Math.round(this.data[0].hourly.apparent_temperature[hindex])}<span>°C</span></span>`;
                     this.hourlyForecast.appendChild(hourItem);
-                }
             });
         }
     }
@@ -94,7 +110,7 @@ class manageData {
 
     async getWeatherData() {
         try {
-            const response = await fetch(`${API.baseurl}forecast?latitude=49.24966&longitude=-123.11934&${API.currentParams}&${API.dailyParams}&${API.hourlyParams}`, requestOptions);
+            const response = await fetch(`${API.baseurl}forecast?latitude=49.24966&longitude=-123.11934&&timezone=auto&${API.currentParams}&${API.dailyParams}&${API.hourlyParams}`, requestOptions);
             const data = await response.json();
             console.log('Current Location Data:', data);
             this.addData(data);
@@ -141,7 +157,6 @@ class manageData {
         if (deg >= 292.5 && deg < 337.5) return 'NW';
         return 'N'; // Default case
     }
-
 }
 
 const weatherData = new manageData();
